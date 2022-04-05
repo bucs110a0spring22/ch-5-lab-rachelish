@@ -1,24 +1,21 @@
 #### CS 110
-# Chapter 5 - Lab - Selection
-
-### [Assignment Description](https://docs.google.com/document/d/1QfPsRfo1kZoQw4p0DhjxZskNfE0eLAV6Z6SgPSleDM4/edit?usp=sharing)
+# Midterm - Python Programming
 
 ***
 
 _Replace anything surrounded by the `< >` symbols._
 
 ## SUMMARY:
-It's a dartboard game approximating pi using monte pi
-## GRACE DAYS
-Grace days used for this assignment: 0
-
-Grace days remaining: 5/5
-
+What did you clean up?:
+I cleaned the players points section and the draw circle section
+Summary of function(s) added:
+I added a function that replicated the etch a sketch toy
+Summary of Feature Added:
+i added a feature that calculates circumference
 ## KNOWN BUGS AND INCOMPLETE PARTS:
-None?
+ I don't think the circumference feature works
 
 ## REFERENCES:
-turtle.py documentation, stack overflow
-
+turtle.py
 ## MISCELLANEOUS COMMENTS:
-peepeepoopoo
+help

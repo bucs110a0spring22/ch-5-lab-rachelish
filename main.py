@@ -24,16 +24,15 @@ Functions you must implement:
   playDarts(myturtle=None) - a simulated game of darts between two players
   montePi(myturtle=None, num_darts=0) - simulation algorithm returns the approximation of pi
 '''
+
 import turtle
 import random
-import time
-
+#import time
+import math
 #########################################################
 #                   Your Code Goes Below                #
 #########################################################
-
-
-
+    
 def drawSquare(darty=None, width=0, top_left_x=0, top_left_y=0):
     darty.up()
     darty.goto(top_left_x, top_left_y)
@@ -48,16 +47,16 @@ def drawLine(darty=None, x_start=0, y_start=0, x_end=0, y_end=0):
     darty.down()
     darty.goto(x_end, y_end)
 
-def drawCircle(darty=None, radius=0):
-    darty.goto(0, -1)
-    darty.circle(radius, steps= 100)
+#def drawCircle(darty=None, radius=0):
+   # darty.goto(0, -1)
+    #darty.circle(radius, steps= 100)
 
 def setUpDartboard(myWindow, darty=None):
     turtle.setworldcoordinates(-1, -1, 1, 1)
     drawSquare(darty, 2, -1, 1)
     drawLine(darty, -1, 0, 1, 0)
     drawLine(darty, 0, -1, 0, 1)
-    drawCircle(darty, 1)
+    darty.circle(-1, steps= 100)
     darty.up()
 
 def throwDart(darty = None):
@@ -79,18 +78,22 @@ def isInCircle(darty=None, circle_center_x=0, circle_center_y=0, radius=0):
 
 
 def playDarts(darty = None):
-  player1=0
-  player2=0
-  for i in range(5):
+  player1 = 0
+  player2 = 0
+  #i optimized this code i think
+  for i in range(10):
     throwDart(darty)
     if (isInCircle(darty) == True):
       player1 += 1
-  for i in range(5):
     throwDart(darty)
     if (isInCircle(darty) == True):
       player2 += 1
   print("Player One Score: ", player1)
   print("Player Two Score: ", player2)
+  #for i in range(10):
+   # throwDart(darty)
+   # if (isInCircle(darty) == True):
+  
 
 def montePi(darty = None, number_darts=0):
   initial_count = 0
@@ -102,10 +105,20 @@ def montePi(darty = None, number_darts=0):
   print("This is the number of darts that are in the circle: ", initial_count)
   print("This is your pi approximation: ", pi_approximation)
   return pi_approximation
-  
 
-  
 
+def move(walk):
+  while True:
+    angle = int(input("Input an angle: "))
+    turtle.pd()
+    turtle.right(angle)
+    turtle.forward(walk)
+    percent_of_angle = (angle//360)*100
+    if angle == 0:
+      return percent_of_angle 
+      
+def equation():
+  print(percent_of_angle)
   
 #########################################################
 #         Do not alter any code below here              #
@@ -126,14 +139,19 @@ def main():
   #Create window, turtle, set up window as dartboard
   window = turtle.Screen()
   darty = turtle.Turtle()
-  darty.speed(0)  # as fast as it will go!
-  setUpDartboard(window, darty)
   
+  darty.speed(0)  # as fast as it will go!
+  
+  setUpDartboard(window, darty)
+
   # Loop for 10 darts to test your code
   for i in range(10):
     throwDart(darty)
+
   print("\tPart A Complete...")
- 
+  
+  move(0.5)
+  equation()
 
   print("=========== Part B ===========")
   darty.clear()
@@ -149,15 +167,17 @@ def main():
   # instead of for each throw (saves LOTS of time):
   BATCH_OF_DARTS = 5000
   window.tracer(BATCH_OF_DARTS)
+  
 
   # Conduct simulation and print result
   number_darts = int(input("\nPlease input the number of darts to be thrown in the simulation:  "))
+
   approx_pi = montePi(darty, number_darts)
   print("\nThe estimation of pi using "+str(number_darts)+" virtual darts is " + str(approx_pi))
   print("\tPart C Complete...")
-  
+
   # Don't hide or mess with window while it's 'working'
-  
+
   turtle.exitonclick()
   
 main()
